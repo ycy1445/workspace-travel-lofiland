@@ -8,7 +8,7 @@ function BackButton({ goTo }) {
   )
 }
 
-function TimelineItem({ time, event, note, isLast }) {
+function TimelineItem({ time, event, note }) {
   return (
     <div className="timeline-item">
       <div className="timeline-left">

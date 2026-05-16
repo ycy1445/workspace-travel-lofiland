@@ -351,7 +351,7 @@ html, body, #root {
 }
 
 .timeline-time {
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   color: var(--text-light);
   letter-spacing: 0.05em;
   margin-top: 0.4rem;
@@ -364,16 +364,16 @@ html, body, #root {
 }
 
 .timeline-event {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--dark-earth);
   margin-bottom: 0.25rem;
 }
 
 .timeline-note {
-  font-size: 0.75rem;
+  font-size: 0.88rem;
   color: var(--text-light);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .tag-prize {
@@ -433,6 +433,19 @@ html, body, #root {
 .note-text strong {
   color: var(--dark-earth);
   font-weight: 500;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.note-ul {
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.note-ul li {
+  line-height: 1.6;
 }
 
 /* ── FAQ ── */
