@@ -26,22 +26,23 @@ function FaqItem({ faq, isOpen, onToggle }) {
 }
 
 export default function FAQPage({ active, goTo }) {
-  const [faqs, setFaqs] = useState([])
-  const [openId, setOpenId] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [question, setQuestion] = useState('')
+  const [faqs, setFaqs]           = useState([])
+  const [openId, setOpenId]       = useState(null)
+  const [loading, setLoading]     = useState(false)
+  const [question, setQuestion]   = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [successMsg, setSuccessMsg] = useState(false)
 
   useEffect(() => {
-    if (!active || !IS_CONFIGURED) {
-      setLoading(false)
-      return
-    }
+    if (!active) return
+    if (!IS_CONFIGURED) return
+
+    // 每次進入 FAQ 頁都重新顯示載入中
+    setLoading(true)
 
     const fetchFAQs = async () => {
       try {
-        const res = await fetch(APPS_SCRIPT_URL)
+        const res  = await fetch(APPS_SCRIPT_URL)
         const data = await res.json()
         setFaqs(data)
       } catch (e) {
@@ -70,9 +71,11 @@ export default function FAQPage({ active, goTo }) {
       })
     } catch {}
 
-    setSubmitted(true)
     setQuestion('')
     setSubmitting(false)
+    setSuccessMsg(true)
+    // 3 秒後隱藏成功訊息，讓使用者可以繼續送出
+    setTimeout(() => setSuccessMsg(false), 3000)
   }
 
   const toggle = (id) => setOpenId(openId === id ? null : id)
@@ -92,10 +95,13 @@ export default function FAQPage({ active, goTo }) {
 
         {/* FAQ List */}
         {loading ? (
-          <p className="faq-loading">載入中...</p>
+          <div className="faq-loading">
+            <span className="faq-loading-dot" />
+            抓取資料中...
+          </div>
         ) : faqs.length === 0 ? (
           <p className="faq-empty">
-            {IS_CONFIGURED ? '目前還沒有 FAQ，歡迎在下方提問！' : '尚未連接 Google Sheets，請先設定 APPS_SCRIPT_URL。'}
+            {IS_CONFIGURED ? '目前還沒有 FAQ，歡迎在下方提問！' : '尚未連接 Google Sheets。'}
           </p>
         ) : (
           <div className="faq-list">
@@ -116,29 +122,29 @@ export default function FAQPage({ active, goTo }) {
             <div className="faq-divider" />
             <p className="faq-submit-label">提出你的問題</p>
 
-            {submitted ? (
+            {successMsg && (
               <div className="faq-success">
                 <span>✓</span>
                 <span>問題已送出！主辦人整理後會更新在上方。</span>
               </div>
-            ) : (
-              <form className="faq-form" onSubmit={handleSubmit}>
-                <textarea
-                  className="faq-input"
-                  rows={3}
-                  placeholder="輸入你想問的問題..."
-                  value={question}
-                  onChange={e => setQuestion(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="faq-submit-btn"
-                  disabled={!question.trim() || submitting}
-                >
-                  {submitting ? '送出中...' : '送出問題'}
-                </button>
-              </form>
             )}
+
+            <form className="faq-form" onSubmit={handleSubmit}>
+              <textarea
+                className="faq-input"
+                rows={3}
+                placeholder="輸入你想問的問題..."
+                value={question}
+                onChange={e => setQuestion(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="faq-submit-btn"
+                disabled={!question.trim() || submitting}
+              >
+                {submitting ? '送出中...' : '送出問題'}
+              </button>
+            </form>
           </>
         )}
 
