@@ -47,7 +47,7 @@ export default function MainPage({ active, goTo }) {
 
         </div>
 
-        <p className="page-stamp">✦ lofi land · 2026 ✦</p>
+        <p className="main-stamp">✦ lofi land · 2026 ✦</p>
       </div>
     </div>
   )
