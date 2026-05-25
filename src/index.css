@@ -269,17 +269,17 @@ html, body, #root {
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  padding: 3.5rem 2.5rem 2.5rem;
-  height: 100%;
+  padding: 2rem 2.5rem 2.5rem;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 1.4rem;
 }
 
 .main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 3rem;
   flex-shrink: 0;
 }
 
@@ -304,28 +304,16 @@ html, body, #root {
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--muted-sage);
-  margin-bottom: 1.4rem;
   flex-shrink: 0;
 }
 
 /* ── Menu Cards ── */
-.menu-grid {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  min-height: 0;
-}
-
 .menu-row {
-  flex: 1;
   display: flex;
   gap: 1.1rem;
-  min-height: 0;
 }
 
 .menu-card {
-  flex: 1;
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -335,12 +323,44 @@ html, body, #root {
   padding: 1.4rem 1.6rem;
   cursor: pointer;
   transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-  min-height: 0;
 }
 
 .menu-card-primary {
-  flex: 2.2;
+  flex: 1;
+  min-height: 140px;
   padding: 2rem;
+  margin-bottom: 0;
+}
+
+.menu-row .menu-card {
+  flex: 1;
+}
+
+.menu-card-sm {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.4rem 1.4rem;
+}
+
+.menu-card-sm .card-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+}
+
+.menu-card-sm .card-title {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.card-desc-sm {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 .menu-card-primary .card-icon {
@@ -403,9 +423,13 @@ html, body, #root {
 /* ── Sub Pages ── */
 .page-sub {
   background: var(--warm-white);
-  padding: 3.5rem 2.5rem 5rem;
+  padding: 3.5rem 2rem 5rem;
   justify-content: flex-start;
   align-items: stretch;
+}
+
+@media (max-width: 600px) {
+  .page-sub { padding: 2.5rem 1.2rem 4rem; }
 }
 
 .sub-inner {
@@ -637,70 +661,69 @@ html, body, #root {
 .notes-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
-}
-
-@media (max-width: 520px) {
-  .notes-list { grid-template-columns: 1fr; }
+  gap: 1rem;
+  align-items: start;
 }
 
 .note-item {
   display: flex;
-  gap: 1.2rem;
+  gap: 0.85rem;
   background: var(--cream);
-  border-radius: 16px;
-  padding: 1.4rem 1.6rem;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
   border-left: 3px solid var(--muted-sage);
+  min-width: 0;
 }
 
 .note-num {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--muted-sage);
-  min-width: 22px;
+  min-width: 18px;
   padding-top: 2px;
+  flex-shrink: 0;
 }
 
 .note-text {
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.82rem;
+  line-height: 1.65;
   color: var(--charcoal);
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .note-text strong {
   color: var(--dark-earth);
   font-weight: 500;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .note-ul {
-  padding-left: 1.1rem;
+  padding-left: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.28rem;
 }
 
-.note-ul li { line-height: 1.65; }
+.note-ul li { line-height: 1.6; }
 
 /* ── FAQ ── */
 .faq-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
+  gap: 0.75rem;
   align-items: start;
-}
-
-@media (max-width: 520px) {
-  .faq-list { grid-template-columns: 1fr; }
 }
 
 .faq-item {
   background: var(--cream);
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1.5px solid var(--light-gray);
   overflow: hidden;
   transition: border-color 0.2s;
+  min-width: 0;
 }
 
 .faq-item.open { border-color: var(--muted-sage); }
@@ -709,16 +732,18 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 1.5rem;
+  padding: 0.95rem 1.1rem;
   cursor: pointer;
-  gap: 0.75rem;
+  gap: 0.5rem;
   user-select: none;
 }
 
 .faq-q-text {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--dark-earth);
+  word-break: break-word;
+  min-width: 0;
 }
 
 .faq-chevron {
@@ -738,10 +763,11 @@ html, body, #root {
 .faq-item.open .faq-a { max-height: 400px; }
 
 .faq-a-inner {
-  padding: 0 1.5rem 1.2rem;
-  font-size: 0.88rem;
+  padding: 0 1.1rem 1rem;
+  font-size: 0.82rem;
   color: var(--text-light);
-  line-height: 1.75;
+  line-height: 1.7;
+  word-break: break-word;
 }
 
 /* ── FAQ Submit Form ── */
@@ -826,6 +852,105 @@ html, body, #root {
   font-size: 0.85rem;
   padding: 2rem 0;
   font-style: italic;
+}
+
+/* ── Weather Widget ── */
+.weather-widget {
+  flex-shrink: 0;
+}
+
+.weather-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  padding: 0.5rem 0;
+}
+
+.weather-title {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.weather-card {
+  background: var(--cream);
+  border: 1.5px solid var(--light-gray);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.weather-date {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--dark-earth);
+  letter-spacing: 0.06em;
+}
+
+.weather-icon { font-size: 1.6rem; line-height: 1; }
+
+.weather-label {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+.weather-temp {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  margin-top: 0.1rem;
+}
+
+.temp-max {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-earth);
+}
+
+.temp-sep {
+  font-size: 0.75rem;
+  color: var(--muted-sage);
+}
+
+.temp-min {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.weather-rain {
+  font-size: 0.72rem;
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+.rain-high { color: #c0614e; }
+.rain-mid  { color: var(--earth); }
+.rain-low  { color: var(--sage); }
+
+.weather-clothes {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-top: 0.2rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+.weather-rain-warn {
+  color: #c0614e;
+  font-weight: 500;
 }
 
 /* ── Footer stamp ── */
