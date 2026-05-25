@@ -18,7 +18,7 @@ export default function MainPage({ active, goTo }) {
 
         <div className="menu-grid">
 
-          <div className="menu-card" onClick={() => goTo('itinerary')}>
+          <div className="menu-card menu-card-primary" onClick={() => goTo('itinerary')}>
             <div className="card-icon icon-itinerary">🏕️</div>
             <div className="card-content">
               <div className="card-title">行程安排</div>
@@ -27,22 +27,22 @@ export default function MainPage({ active, goTo }) {
             <ArrowIcon />
           </div>
 
-          <div className="menu-card" onClick={() => goTo('notes')}>
-            <div className="card-icon icon-notes">📋</div>
-            <div className="card-content">
-              <div className="card-title">注意事項</div>
-              <div className="card-desc">攜帶物品・天氣準備<br/>安全守則・重要提醒</div>
+          <div className="menu-row">
+            <div className="menu-card" onClick={() => goTo('notes')}>
+              <div className="card-icon icon-notes">📋</div>
+              <div className="card-content">
+                <div className="card-title">注意事項</div>
+                <div className="card-desc">攜帶物品・天氣準備<br/>安全守則・重要提醒</div>
+              </div>
             </div>
-            <ArrowIcon />
-          </div>
 
-          <div className="menu-card" onClick={() => goTo('faq')}>
-            <div className="card-icon icon-faq">💬</div>
-            <div className="card-content">
-              <div className="card-title">FAQ</div>
-              <div className="card-desc">常見問題解答<br/>費用・交通・裝備租借</div>
+            <div className="menu-card" onClick={() => goTo('faq')}>
+              <div className="card-icon icon-faq">💬</div>
+              <div className="card-content">
+                <div className="card-title">FAQ</div>
+                <div className="card-desc">常見問題解答<br/>費用・交通・裝備租借</div>
+              </div>
             </div>
-            <ArrowIcon />
           </div>
 
         </div>
