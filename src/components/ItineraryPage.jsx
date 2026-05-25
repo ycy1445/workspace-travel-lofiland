@@ -43,9 +43,16 @@ export default function ItineraryPage({ active, goTo }) {
               event="🍽️ 午餐"
               note={
                 <>
-                  候選餐廳（待票選）：<br/>
-                  1. 水上人家　2. 香園　3. 左岸人文概念餐廳<br/>
-                  4. 鵝肉擔　5. 吉祥樓餐廳
+                  <span className="tag-prize" style={{ marginLeft: 0, marginRight: '0.4rem' }}>確定</span>
+                  鵝肉擔
+                  <a
+                    href="https://maps.app.goo.gl/MLVFMy2ARwRUMy1a9"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="map-link"
+                  >
+                    📍 Google Maps
+                  </a>
                 </>
               }
             />
@@ -55,6 +62,16 @@ export default function ItineraryPage({ active, goTo }) {
               event="🛒 採買補給"
               note={
                 <>
+                  全聯福利中心 卓蘭經國店
+                  <a
+                    href="https://maps.app.goo.gl/eXu7JN5V2pWa9J8Y9"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="map-link"
+                  >
+                    📍 Google Maps
+                  </a>
+                  <br/>
                   泡麵・酒類飲品・冰塊・零食<br/>
                   <span style={{ color: 'var(--muted-sage)' }}>＋ 其他大家想帶去的物品</span>
                 </>
@@ -64,7 +81,21 @@ export default function ItineraryPage({ active, goTo }) {
             <TimelineItem
               time="14:00"
               event="🍵 迎賓茶飲點心"
-              note="抵達前的歡迎時間，享用茶飲與點心"
+              note={
+                <>
+                  抵達 自然圈營區
+                  <a
+                    href="https://maps.app.goo.gl/Xw7q1P6ewfLim3EN8"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="map-link"
+                  >
+                    📍 Google Maps
+                  </a>
+                  <br/>
+                  享用迎賓茶飲與點心
+                </>
+              }
             />
 
             <TimelineItem

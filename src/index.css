@@ -502,6 +502,19 @@ html, body, #root {
   margin-left: 0.3rem;
 }
 
+.map-link {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--sage);
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.map-link:hover {
+  text-decoration: underline;
+}
+
 .tag-note {
   display: inline-block;
   background: #f0ebe0;
